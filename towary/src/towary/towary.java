@@ -6,11 +6,9 @@ public class towary {
 
     public static void main(String[] args) {
     	
-    	for(int i = 0; i <10000; i++){
-        
-        try(FileWriter writer = new FileWriter("C:\\Users\\Dasha\\Towary.txt", true))
+         try(FileWriter writer = new FileWriter("C:\\Users\\Dasha\\Towary.txt", true))
         {
-           
+           for(int i = 0; i <10000; i++){
         	int i1 = i;
         	String str = " ";
         	int i2 = (int)Math.random()*100;
@@ -19,16 +17,17 @@ public class towary {
             writer.append('\n'); 
             
              
-            writer.flush(); }
+            writer.flush(); 
+        }
+        }
       
         catch(IOException ex){
              
             System.out.println(ex.getMessage());
         }
         
-       }
+      
             
     } 
 
 }
-
