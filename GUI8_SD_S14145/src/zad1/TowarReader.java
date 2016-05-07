@@ -12,9 +12,12 @@ public class TowarReader implements Runnable {
 	@Override
 	public void run() {
 		
+		String currentUsersHomeDir = System.getProperty("user.home");
+    	String towary_fn = currentUsersHomeDir + File.separator + "Towary.txt";
+		
 		BufferedReader bufferedReader = null;
 		
-		  try(FileReader reader = new FileReader("C:\\Users\\Dasha\\Towary.txt"))
+		  try(FileReader reader = new FileReader(towary_fn))
 	      {
 	         
 			  bufferedReader = new BufferedReader(reader);
