@@ -17,7 +17,7 @@ public class towary {
             writer.write(i1 + str + i2);
       
             writer.append('\n'); 
-            writer.append('E');
+            
              
             writer.flush(); }
       
