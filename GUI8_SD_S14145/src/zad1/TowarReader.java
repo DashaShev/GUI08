@@ -25,7 +25,7 @@ public class TowarReader implements Runnable {
 	          while(bufferedReader.readLine()!=null){
 	        	  
 	        	  String[] dane = buff.split(" ");
-	        	  System.out.format("dana[0]='%s'  dana[1]='%s'\n", dane[0], dane[1]);
+	        	  
 	        	  int t1 = Integer.parseInt(dane[0]);
 	        	  int t2 = Integer.parseInt(dane[1]);
 	        	  
@@ -36,7 +36,7 @@ public class TowarReader implements Runnable {
 	          bufferedReader.close();
 	      }
 	      catch(IOException ex){
-	           
+	    	  System.out.println(ex.getMessage());
 	      }   
 		  
 		
