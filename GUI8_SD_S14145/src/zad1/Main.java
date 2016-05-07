@@ -12,7 +12,11 @@ public class Main {
 
   public static void main(String[] args) {
 	  
-	
+	TowarReader towar = new TowarReader();
+  	
+  	Thread thr = new Thread(towar);
+  	thr.start(); 
+  
 	  
   }
 }
