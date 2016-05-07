@@ -1,0 +1,43 @@
+Task: Goods (8 items)
+
+The code running in the thread A reading from the file ../Towary.txt information about the goods in the form of:
+
+good_id weight
+
+
+tworzy obiekty klasy Towar, zawierajace przeczytane informacje oraz wyprowadza na konsole informacje o liczbie utworzonych  obiektow. Informacja ma byc wyprowadzana co 200 obiektow w postaci:
+
+Goods (Towar) class creates objects containing the information read and outputs
+to the console information about the number of created objects. 
+Information should be output as 200 objects in the form of:
+
+
+created 200 objects
+created 400 objects
+created 600 objects
+etc.
+
+Code running in parallel in another thread (B) reaches these objects, then it sums up the weight of goods 
+and outputs to the console information about adding conducted as 100 objects, eg .:
+
+counted weight of 100 goods
+counted weight of 200 goods
+counted weight of 300 goods
+etc.
+
+At the end, it gives the total weight of all goods.
+
+Comments: 
+
+The file should contain at least 10000 goods (should itself generate it
+programmatically, but on the side, not in the program), file name (along the
+path), it is obligatory, please do not attach the file to the project ..
+Synchronize and coordinate the work of both threads.
+
+
+Form print on the console is obligatory
+All classes in the program should be public (in different files)
+Implementation of the program should begin in the method main()  of mandatory class Main.
+The file should be located in a subdirectory of the project (i.e. in the directory workspace).
+
+For the fulfillment of these conditions will not be awarded points.
