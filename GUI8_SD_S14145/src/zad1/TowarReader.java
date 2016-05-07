@@ -18,8 +18,12 @@ public class TowarReader implements Runnable {
 	      {
 	         
 			  bufferedReader = new BufferedReader(reader);
+			  String buff = bufferedReader.toString();
 	          while(bufferedReader.readLine()!=null){
-	        	  Towar towar1 = new Towar(); 
+	        	  String[] dane = buff.split(" ");
+	        	  int t1 = Integer.parseInt(dane[0]);
+	        	  int t2 = Integer.parseInt(dane[1]);
+	        	  Towar towar = new Towar(t1, t2);
 	          }
 	             
 	          
