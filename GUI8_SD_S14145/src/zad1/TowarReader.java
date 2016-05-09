@@ -17,6 +17,7 @@ public class TowarReader implements Runnable {
 		
     	try (BufferedReader br = new BufferedReader(new FileReader(towary_fn))) {
     	    String line;
+    	    Integer counter = 0;
     	    while ((line = br.readLine()) != null) {
 	        	  
 	        	  String[] dane = line.split(" ");
@@ -28,6 +29,12 @@ public class TowarReader implements Runnable {
 	        	  int t2 = Integer.parseInt(dane[1]);
 	        	  
 	        	  Towar towar = new Towar(t1, t2);
+	        	  counter++;
+	        	  
+	        	  if(counter % 200 == 0){
+	        		  System.out.println("created " + counter + " objects");
+	        	  }
+	        	  
 	          }
 	             
 	          
