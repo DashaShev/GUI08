@@ -15,17 +15,15 @@ public class TowarReader implements Runnable {
 		String currentUsersHomeDir = System.getProperty("user.home");
     	String towary_fn = currentUsersHomeDir + File.separator + "Towary.txt";
 		
-		BufferedReader bufferedReader = null;
-		
-		  try(FileReader reader = new FileReader(towary_fn))
-	      {
-	         
-			  bufferedReader = new BufferedReader(reader);
-			  String buff = bufferedReader.toString();
-	          while(bufferedReader.readLine()!=null){
+    	try (BufferedReader br = new BufferedReader(new FileReader(towary_fn))) {
+    	    String line;
+    	    while ((line = br.readLine()) != null) {
 	        	  
-	        	  String[] dane = buff.split(" ");
+	        	  String[] dane = line.split(" ");
 	        	  
+	        	  if(dane.length != 2){
+	        		  System.out.println(line);
+	        	  }
 	        	  int t1 = Integer.parseInt(dane[0]);
 	        	  int t2 = Integer.parseInt(dane[1]);
 	        	  
@@ -33,7 +31,7 @@ public class TowarReader implements Runnable {
 	          }
 	             
 	          
-	          bufferedReader.close();
+	          br.close();
 	      }
 	      catch(IOException ex){
 	    	  System.out.println(ex.getMessage());
