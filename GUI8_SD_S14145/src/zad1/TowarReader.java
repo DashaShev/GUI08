@@ -7,9 +7,9 @@ public class TowarReader implements Runnable {
 	
 	private LinkedTransferQueue<Towar> towarTransQueue;
 	
-	  public TowarReader(LinkedTransferQueue z){
-		  this.towarTransQueue = z;
-	  }
+	public TowarReader(LinkedTransferQueue<Towar> z){
+		this.towarTransQueue = z;
+	}
 	
 
 	@Override
@@ -17,16 +17,19 @@ public class TowarReader implements Runnable {
 		
 		String currentUsersHomeDir = System.getProperty("user.home");
     	String towary_fn = currentUsersHomeDir + File.separator + "Towary.txt";
-		
-    	try (BufferedReader br = new BufferedReader(new FileReader(towary_fn))) {
+		System.err.println("TowarReader.run(): process " + towary_fn);
+    	try
+    	{
     	    String line;
     	    Integer counter = 0;
+    	    BufferedReader br = new BufferedReader(new FileReader(towary_fn));
     	    while ((line = br.readLine()) != null) {
 	        	  
 	        	  String[] dane = line.split(" ");
-	        	  
+	        	  // System.err.println(line);
 	        	  if(dane.length != 2){
-	        		  System.out.println(line);
+	        		  System.err.println("Unhandled line: " + line);
+	        		  continue;
 	        	  }
 	        	  int t1 = Integer.parseInt(dane[0]);
 	        	  int t2 = Integer.parseInt(dane[1]);
@@ -37,24 +40,27 @@ public class TowarReader implements Runnable {
 	        	  if(counter % 200 == 0){
 	        		  System.out.println("created " + counter + " objects");
 	        	  }
-	        	  
-	        	  try {
-					towarTransQueue.transfer(towar);
-				} catch (InterruptedException e) {
-					
-					e.printStackTrace();
-				}
-	        	  
+
+				  towarTransQueue.transfer(towar);
 	          }
-	             
-	          
 	          br.close();
-	      }
-	      catch(IOException ex){
-	    	  System.out.println(ex.getMessage());
-	      }   
-		  
-		
+	          System.err.println("TowarReader.run(): done");
+     	} catch (InterruptedException ex) {
+	    	  System.err.println(ex.getMessage());
+	    }
+	    catch(IOException ex){
+	    	  System.err.println(ex.getMessage());
+	    }
+    	finally {
+    		// this code will be executed in any case
+    		try {
+				towarTransQueue.transfer(null);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}  
+		System.err.println("TowarReader.run() finished");
 	}
 
 }
