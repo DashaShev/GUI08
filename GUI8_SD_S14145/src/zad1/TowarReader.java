@@ -54,8 +54,8 @@ public class TowarReader implements Runnable {
     	finally {
     		// this code will be executed in any case
     		try {
-    			System.err.println("TowarReader.run(): added EndOfStream flag");
 				towarTransQueue.transfer(new Towar(-1, -1));
+    			System.err.println("TowarReader.run(): added EndOfStream flag");
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

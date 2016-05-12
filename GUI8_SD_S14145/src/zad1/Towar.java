@@ -5,9 +5,7 @@ public class Towar {
 	public int weight;
 	
 	public Towar(int id, int weight){
-		
+		this.id = id;
+		this.weight = weight;
 	}
-	
-	
-
 }
