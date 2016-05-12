@@ -41,6 +41,7 @@ public class TowarReader implements Runnable {
 	        		  System.out.println("created " + counter + " objects");
 	        	  }
 
+
 				  towarTransQueue.transfer(towar);
 	          }
 	          br.close();
@@ -64,4 +65,3 @@ public class TowarReader implements Runnable {
 	}
 
 }
-
