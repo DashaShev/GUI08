@@ -35,14 +35,13 @@ public class TowarReader implements Runnable {
 	        	  int t2 = Integer.parseInt(dane[1]);
 	        	  
 	        	  Towar towar = new Towar(t1, t2);
+				  towarTransQueue.transfer(towar);
 	        	  counter++;
 	        	  
 	        	  if(counter % 200 == 0){
 	        		  System.out.println("created " + counter + " objects");
 	        	  }
 
-
-				  towarTransQueue.transfer(towar);
 	          }
 	          br.close();
 	          System.err.println("TowarReader.run(): done");
@@ -55,7 +54,8 @@ public class TowarReader implements Runnable {
     	finally {
     		// this code will be executed in any case
     		try {
-				towarTransQueue.transfer(null);
+    			System.err.println("TowarReader.run(): added EndOfStream flag");
+				towarTransQueue.transfer(new Towar(-1, -1));
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

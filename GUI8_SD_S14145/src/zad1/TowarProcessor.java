@@ -18,7 +18,7 @@ public class TowarProcessor implements Runnable {
 		try {
 			Integer counter = 0;
 			Towar towar = this.towarTransQueue.take();
-			while (towar != null) {
+			while (towar != null && towar.id != -1) {
 				waga += towar.weight;
 				counter++;
 				if (counter % 100 == 0){
@@ -26,7 +26,7 @@ public class TowarProcessor implements Runnable {
 	      	    }
 				towar = this.towarTransQueue.take();
 			}
-			System.out.println("Total weight is: " + waga);
+			System.out.println("Total weight is: " + this.waga);
 		} catch (InterruptedException ex) {			
 			ex.printStackTrace();
 		}
