@@ -15,14 +15,9 @@ public class Main {
 
 	
 	
-	public static void main(String[] args) {
-	  
-	TowarReader towar = new TowarReader();
+	public static void main(String[] args) { 
   	
-  	Thread thr = new Thread(towar);
-  	thr.start(); 
-  	
-  	LinkedTransferQueue<Object> towarTransQueue = new LinkedTransferQueue<Object>();
+  	LinkedTransferQueue<Towar> towarTransQueue = new LinkedTransferQueue<Object>();
   
   	ExecutorService exService = Executors.newFixedThreadPool(2);
   	Runnable producer = new TowarReader(towarTransQueue);
