@@ -40,6 +40,7 @@ public class TowarReader implements Runnable {
 	        	  
 	        	  try {
 					towarTransQueue.transfer(towar);
+					
 				} catch (InterruptedException e) {
 					
 					e.printStackTrace();
@@ -52,10 +53,15 @@ public class TowarReader implements Runnable {
 	      }
 	      catch(IOException ex){
 	    	  System.out.println(ex.getMessage());
-	      }   
-		  
+	      } 
+    	
+    	try {
+			towarTransQueue.transfer(null);
+		} catch (InterruptedException e) {
+			
+			e.printStackTrace();
+		}
 		
 	}
 
 }
-
