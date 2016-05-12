@@ -5,14 +5,10 @@ import java.util.concurrent.LinkedTransferQueue;
 
 public class TowarReader implements Runnable {
 	
-	static LinkedTransferQueue<Object> towarTransQueue = new LinkedTransferQueue<Object>();
+	private LinkedTransferQueue<Towar> towarTransQueue;
 	
 	  public TowarReader(LinkedTransferQueue z){
 		  this.towarTransQueue = z;
-	  }
-	
-	  public TowarReader(){
-		  
 	  }
 	
 
@@ -62,3 +58,4 @@ public class TowarReader implements Runnable {
 	}
 
 }
+
