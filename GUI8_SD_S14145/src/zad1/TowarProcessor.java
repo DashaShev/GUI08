@@ -3,8 +3,9 @@ package zad1;
 import java.util.concurrent.LinkedTransferQueue;
 
 public class TowarProcessor implements Runnable {
-
-	static LinkedTransferQueue<Object> towarTransQueue = new LinkedTransferQueue<Object>();
+	
+    private int waga;
+	private  LinkedTransferQueue<Towar> towarTransQueue;
 	
 	  public TowarProcessor(LinkedTransferQueue z){
 		  this.towarTransQueue = z;
@@ -13,7 +14,15 @@ public class TowarProcessor implements Runnable {
 	@Override
 	public void run() {
 		try {
-			Object towar = towarTransQueue.take();
+			Integer counter = 0;
+			Towar towar = towarTransQueue.take();
+			waga+=towar.weight;
+			counter++;
+			if(counter % 100 == 0){
+      		  System.out.println("counted weight of " + counter + " goods");
+      	  }
+			
+			
 		} catch (InterruptedException e) {
 			
 			e.printStackTrace();
