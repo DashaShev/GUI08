@@ -16,8 +16,16 @@ public class TowarProcessor implements Runnable {
 		try {
 			Integer counter = 0;
 			Towar towar = towarTransQueue.take();
+			
+			if (towar == null) {
+				   System.out.println(waga);
+				   return;
+				}
+			
 			waga+=towar.weight;
+			System.out.println(waga);
 			counter++;
+			System.out.println(counter);
 			if(counter % 100 == 0){
       		  System.out.println("counted weight of " + counter + " goods");
       	  }
