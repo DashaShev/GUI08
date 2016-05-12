@@ -1,12 +1,19 @@
 package zad1;
 
 import java.io.*;
+import java.util.concurrent.LinkedTransferQueue;
 
 public class TowarReader implements Runnable {
 	
+	static LinkedTransferQueue<Object> towarTransQueue = new LinkedTransferQueue<Object>();
 	
-	  
+	  public TowarReader(LinkedTransferQueue z){
+		  this.towarTransQueue = z;
+	  }
 	
+	  public TowarReader(){
+		  
+	  }
 	
 
 	@Override
@@ -34,6 +41,13 @@ public class TowarReader implements Runnable {
 	        	  if(counter % 200 == 0){
 	        		  System.out.println("created " + counter + " objects");
 	        	  }
+	        	  
+	        	  try {
+					towarTransQueue.transfer(towar);
+				} catch (InterruptedException e) {
+					
+					e.printStackTrace();
+				}
 	        	  
 	          }
 	             
